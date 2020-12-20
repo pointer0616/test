@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Jua&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>FInd My BTS</title>
+    <meta name="title" content="Find My BTS">
+    <meta name="subject" content="얼굴로 보는 인공지능 테스트, 나와 어울리는 BTS 맴버를 찾아보세요!">
+    <!-- <meta name="keywords" content="동물상 테스트, 인공지능 동물상 테스트, 얼굴상, 얼굴상 테스트, 나와 닮은 동물, 동물상 찾기, 얼굴로 보는 동물상, 얼굴 동물, 동물얼굴, animalface, 강아지상, 고양이상, 여우상, 사슴상, 토끼상, 곰상, 공룡상, 인공지능 동물상, AI 얼굴상, AI 동물상"> -->
+    <meta name="author" content="변우현">
+    <link rel="stylesheet" href="style.css">
+    <link rel="canonical" href="https://b-site.netlify.app" />
+    <meta property="og:url" content="https://b-site.netlify.app" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Find My BTS" />
+    <meta property="og:description"
+        content="얼굴로 보는 인공지능 테스트, 나와 어울리는 BTS 맴버를 찾아보세요! BTS 맴버 사진 데이터로 학습한 인공지능이 나의 얼굴로 나와 어울리는 맴버를 찾아드립니다. 회원가입도 필요없이 화면에서 바로 확인해보세요! 사진 데이터는 그 어디에도 전송되지 않습니다. 인공지능이 보는 나만의 맴버 테스트 한번 해보세요!" />
+    <!-- <meta property="og:image" content="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2Fc0eq42%2FbtqCQpiFhFn%2F8KPaOP9q8PXpJFRL7if55K%2Fimg.jpg" /> -->
+    <meta property="og:image" content="img/btslogo1.jpg" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e64b3727e862b06"></script>
+</head>
+
+<body>
+    <!-- <h1 style="text-align:center; background-color: #f6f7fa; border-bottom:solid;">I PURPLE YOU</h1> -->
+    <h1 style="text-align:center; background-color: #6f42c199; border-bottom:solid; color:wheat;">I PURPLE YOU</h1>
+
+    <section class="container d-flex flex-column justify-content-center align-items-center">
+        <span class="select-language">Language</span>
+        <select onchange="changeLanguage(this)" class="custom-select col-8">
+            <option value="ko" lang="ko">한국어</option>
+            <option value="en" lang="en">English</option>
+            <option value="es" lang="es">español</option>
+            <option value="ja" lang="ja">日本語</option>
+            <option value="zh" lang="zh">中文</option>
+            <option value="vi" lang="vi">tiếng Việt</option>
+            <option value="id" lang="id">Bahasa Indonesia</option>
+            <option value="it" lang="it">Italiano</option>
+            <option value="th" lang="th">ไทย</option>
+        </select>
+    </section>
+
+    <section class="section">
+        <h1 class="title">Find My BTS</h1>
+        <h3 class="subtitle">AI finds out which bts member looks good together with you</h3>
+        <h2 class="sr-only">나는 BTS맴버중 누구랑 어울릴까? 나의 최애 찾기를 해보세요!</h2>
+        <h3 class="sr-only">BTS 맴버 사진 데이터로 학습한 인공지능이 나의 얼굴로 나와 어울리는 맴버를 찾아드립니다.</h3>
+        <h4 class="sr-only">본 서비스는 Google의 인공지능 teachable machine 2.0을 활용하였습니다.</h4>
+        <p class="sr-only">얼굴로 보는 인공지능 테스트, 나와 어울리는 BTS 맴버를 찾아보세요! BTS 맴버 사진 데이터로 학습한 인공지능이 나의 얼굴로 나와 어울리는 맴버를 찾아드립니다.
+            회원가입도 필요없이 화면에서 바로 확인해보세요! 사진 데이터는 그 어디에도 전송되지 않습니다. 인공지능이 보는 나만의 맴버 테스트 한번 해보세요! 강아지상? 고양이상? 여우상? 사슴상? 토끼상?
+            곰상? 공룡상? 얼굴상 테스트를 통해 나와 닮은 동물 찾기를 할 수 있습니다.</p>
+    </section>
+
+    <h3 class="pb-2 d-flex justify-content-center">Please choose your gender.</h3>
+    <section class="d-flex justify-content-center">
+        <p class="d-flex align-items-center pr-3">female</p>
+        <div>
+            <input type="checkbox" id="gender">
+            <label for="gender">
+                <span class="knob">
+                    <i></i>
+                </span>
+            </label>
+        </div>
+        <p class="d-flex align-items-center pl-3">male</p>
+    </section>
+    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <div class="mt-3 container file-upload">
+        <div class="image-upload-wrap">
+            <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
+            <div class="drag-text">
+                <img src="img/upload.svg" class="mt-5 pt-5 upload">
+                <h3 class="mb-5 pb-5 pt-4  upload-text">Drag or press to upload a picture of your face!</h3>
+            </div>
+        </div>
+        <div class="file-upload-content">
+            <img class="file-upload-image" id="face-image" src="#" alt="your image" />
+            <div id="loading" class="animated bounce">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <p class="text-center">AI is analyzing your BTS members.</p>
+            </div>
+            <p class="result-message">
+                <!-- <div id="bts-image">방탄이미지</div> -->
+                <!-- <div class="file-upload-image style='max-height: 60%;
+                max-width: 60%;
+                margin: auto;
+                padding: 10px;" id="bts-image"></div> -->
+            </p>
+            <div id="label-container" class="d-flex flex-column justify-content-around"></div>
+            <div id="addThis" class="addthis_inline_share_toolbox_6lz1"></div>
+
+            <div class="pt-3 image-title-wrap">
+                <button type="button p-2" class="try-again-btn" onclick="window.location.reload();">
+                    <span class="try-again-text"> Try again with another picture</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- 광고 -->
+    <div class="ad-banner">
+        <ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-KvlxMWGYRWqdPzxR" data-ad-width="320"
+            data-ad-height="100"></ins>
+    </div>
+    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+
+    <div class="ad-banner">
+        <ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-zhDzkQxe68LATq4k" data-ad-width="320"
+            data-ad-height="100"></ins>
+    </div>
+    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+
+    <div class="ad-banner">
+        <ins class="kakao_ad_area" style="display:none;" data-ad-unit="DAN-QnHF5lwrlhiB4JZq" data-ad-width="320"
+            data-ad-height="50"></ins>
+    </div>
+    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+
+    <!-- 하단배너 -->
+    <footer class="footer pt-5 container d-flex justify-content-center">
+        <div style="align-items : center;">
+            production help <a href="https://www.youtube.com/channel/UCQNE2JmbasNYbjGAcuBiRRg"
+                style="color:red; text-decoration: underline;">jocoding youtube</a>
+        </div>
+        <!-- <section class="youtube pb-3" id="yotube-mid-link">
+            <span class="container mt-3 youtube-cover d-flex flex-row-reverse align-items-center">
+                <img src="img/youtube-copy.jpg" alt="youtube-icon" class="youtube-icon">
+                <a href="https://www.youtube.com/channel/UCQNE2JmbasNYbjGAcuBiRRg" class="youtube-link">By 조코딩 유튜브 채널</a>
+            </span>
+        </section> -->
+        <br>
+        <div>
+            <p>&copy; 개발자 : 변우현 </p>
+        </div>
+        <!-- <div>
+            <p>&copy; B_site_Development 2020. All Rights Reserved. </p>
+        </div> -->
+    </footer>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('.image-upload-wrap').hide();
+                    $('#loading').show();
+                    $('.file-upload-image').attr('src', e.target.result);
+                    $('.file-upload-content').show();
+                    $('.image-title').html(input.files[0].name);
+                };
+                reader.readAsDataURL(input.files[0]);
+                init().then(function () {
+                    console.log("hello");
+                    predict();
+                    $('#loading').hide();
+                });
+            } else {
+                removeUpload();
+            }
+        }
+
+        function removeUpload() {
+            $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+            $('.file-upload-content').hide();
+            $('.image-upload-wrap').show();
+        }
+        $('.image-upload-wrap').bind('dragover', function () {
+            $('.image-upload-wrap').addClass('image-dropping');
+        });
+        $('.image-upload-wrap').bind('dragleave', function () {
+            $('.image-upload-wrap').removeClass('image-dropping');
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script type="text/javascript">
+        // let URL;
+        // const urlMale = "https://teachablemachine.withgoogle.com/models/o9D1N5TN/";
+        // const urlFemale = "https://teachablemachine.withgoogle.com/models/bB3YHn5r/";
+        const URL = "https://teachablemachine.withgoogle.com/models/DfFQGT2oj/";
+        let model, webcam, labelContainer, maxPredictions;
+        async function init() {
+            // if (document.getElementById("gender").checked) {
+            //     URL = urlMale;
+            // } else {
+            //     URL = urlFemale;
+            // }
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+            model = await tmImage.load(modelURL, metadataURL);
+            maxPredictions = model.getTotalClasses();
+            labelContainer = document.getElementById("label-container");
+            for (let i = 0; i < maxPredictions; i++) {
+                var element = document.createElement("div")
+                element.classList.add("d-flex");
+                labelContainer.appendChild(element);
+            }
+        }
+        async function predict() {
+            var image = document.getElementById("face-image")
+            const prediction = await model.predict(image, false);
+            prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
+            console.log(prediction[0].className);
+            // var resultTitle, resultExplain, resultCeleb;
+            var resultTitle, resultExplain;
+            if (document.getElementById("gender").checked) {
+            switch (prediction[0].className) {
+                case "v":
+                    document.getElementById('face-image').src = "img/V.jpg"
+                    resultTitle = "V"
+                    resultExplain = "The member of BTS who looks like you is V."
+                    break;
+                case "suga":
+                    document.getElementById('face-image').src = "img/SUGA.jpg"
+                    resultTitle = "SUGA"
+                    resultExplain = "The member of BTS who looks like you is SUGA."
+                    break;
+                case "jhope":
+                    document.getElementById('face-image').src = "img/JHOPE.jpg"
+                    resultTitle = "J-HOPE"
+                    resultExplain = "The member of BTS who looks like you is J-HOPE."
+                    break;
+                case "jungkook":
+                    document.getElementById('face-image').src = "img/JUNGKOOK.jpg"
+                    resultTitle = "JUNGKOOK"
+                    resultExplain = "The member of BTS who looks like you is JUNGKOOK."
+                    break;
+                case "jin":
+                    document.getElementById('face-image').src = "img/JIN.jpg"
+                    resultTitle = "JIN"
+                    resultExplain = "The member of BTS who looks like you is JIN."
+                    break;
+                case "jimin":
+                    document.getElementById('face-image').src = "img/JIMIN.jpg"
+                    resultTitle = "JIMIN"
+                    resultExplain = "The member of BTS who looks like you is JIMIN."
+                    break;
+                case "rm":
+                    document.getElementById('face-image').src = "img/RM.jpg"
+                    resultTitle = "RM"
+                    resultExplain = "The member of BTS who looks like you is RM."
+                    break;
+                default:
+                    resultTitle = "NULL"
+                    resultExplain = "Try again with another picture."
+            }
+        }else{
+            switch (prediction[0].className) {
+                case "v":
+                    document.getElementById('face-image').src = "img/V.jpg"
+                    resultTitle = "V"
+                    resultExplain = "Congratulations!! The member of BTS who fits you is V."
+                    break;
+                case "suga":
+                    document.getElementById('face-image').src = "img/SUGA.jpg"
+                    resultTitle = "SUGA"
+                    resultExplain = "Congratulations!! The member of BTS who fits you is SUGA."
+                    break;
+                case "jhope":
+                    document.getElementById('face-image').src = "img/JHOPE.jpg"
+                    resultTitle = "J-HOPE"
+                    resultExplain = "Congratulations!! The member of BTS who fits you is J-HOPE."
+                    break;
+                case "jungkook":
+                    document.getElementById('face-image').src = "img/JUNGKOOK.jpg"
+                    resultTitle = "JUNGKOOK"
+                    resultExplain = "Congratulations!! The member of BTS who fits you is JUNGKOOK."
+                    break;
+                case "jin":
+                    document.getElementById('face-image').src = "img/JIN.jpg"
+                    resultTitle = "JIN"
+                    resultExplain = "Congratulations!! The member of BTS who fits you is JIN."
+                    break;
+                case "jimin":
+                    document.getElementById('face-image').src = "img/JIMIN.jpg"
+                    resultTitle = "JIMIN"
+                    resultExplain = "Congratulations!! The member of BTS who fits you is JIMIN."
+                    break;
+                case "rm":
+                    document.getElementById('face-image').src = "img/RM.jpg"
+                    resultTitle = "RM"
+                    resultExplain = "Congratulations!! The member of BTS who fits you is RM."
+                    break;
+                default:
+                    resultTitle = "NULL"
+                    resultExplain = "Try again with another picture."
+            }
+        }
+
+            var title = "<div class='" + prediction[0].className + "-animal-title'>" + resultTitle + "</div>";
+            var explain = "<div class='animal-explain pt-2'>" + resultExplain + "</div>";
+            // var explain = "<div class='animal-explain pt-2' innerHTML></div>"
+            // var celeb = "<div class='" + prediction[0].className + "-animal-celeb pt-2 pb-2'>" + resultCeleb + "</div>"
+            // $('.result-message').html(title + explain + celeb);
+            $('.result-message').html(title + explain);
+            // 아래에 추가 이미지 출력
+            // document.getElementById('bts-image').innerHTML="<img src='img/RM.jpg'>";
+            // 기존 이미지 변경
+            // document.getElementById('face-image').src='img/RM.jpg';
+            var barWidth;
+            for (let i = 0; i < maxPredictions; i++) {
+                if (prediction[i].probability.toFixed(2) > 0.1) {
+                    barWidth = Math.round(prediction[i].probability.toFixed(2) * 100) + "%";
+                } else if (prediction[i].probability.toFixed(2) >= 0.01) {
+                    barWidth = "4%"
+                } else {
+                    barWidth = "2%"
+                }
+                var labelTitle;
+                switch (prediction[i].className) {
+                    case "v":
+                        labelTitle = "V"
+                        break;
+                    case "suga":
+                        labelTitle = "SUGA"
+                        break;
+                    case "jungkook":
+                        labelTitle = "JUNGKOOK"
+                        break;
+                    case "jhope":
+                        labelTitle = "J-HOPE"
+                        break;
+                    case "jin":
+                        labelTitle = "JIN"
+                        break;
+                    case "jimin":
+                        labelTitle = "JIMIN"
+                        break;
+                    case "rm":
+                        labelTitle = "RM"
+                        break;
+                    default:
+                        labelTitle = "알수없음"
+                }
+                var label = "<div class='animal-label d-flex align-items-center'>" + labelTitle + "</div>"
+                var bar = "<div class='bar-container position-relative container'><div class='" + prediction[i].className + "-box'></div><div class='d-flex justify-content-center align-items-center " + prediction[i].className + "-bar' style='width: " + barWidth + "'><span class='d-block percent-text'>" + Math.round(prediction[i].probability.toFixed(2) * 100) + "%</span></div></div>"
+                labelContainer.childNodes[i].innerHTML = label + bar;
+            }
+        }
+    </script>
+    <script>
+        function iosApp() {
+            document.getElementById("coupang").style.display = "none";
+            $("#coupang ins").hide();
+            document.getElementById("addThis").style.display = "none";
+            document.getElementById("disqus_thread").style.display = "none";
+            var kakao = document.getElementsByClassName("kakao_ad_area");
+            for (var i = 0; i < kakao.length; i++) {
+                if (kakao[i]) {
+                    kakao[i].style.display = "none";
+                }
+            }
+            document.getElementById("yotube-top-link").style.display = "none";
+            document.getElementById("yotube-mid-link").style.display = "none";
+            document.getElementById("yotube-bottom-link").style.display = "none";
+        }
+    </script>
+</body>
+<!-- 
+image input box
+Copyright (c) 2020 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+gender toggle
+Copyright (c) 2020 by Mert Cukuren (https://codepen.io/knyttneve/pen/bPpEZY)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ -->
+
+</html>
